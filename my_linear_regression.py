@@ -12,7 +12,7 @@ RIDGECV_MODEL = lm.RidgeCV
 
 class RegressionModel():
 
-    def __init__(self, model, normalize=False, polynomial_degree=0, alpha=0):
+    def __init__(self, model, normalize=False, polynomial_degree=0, alpha=0, cv=None, alphas=None):
 
         if model == LINEAR_REGRESSION_MODEL:
             self.linear_regression = model(normalize=normalize)
@@ -20,8 +20,8 @@ class RegressionModel():
             self.linear_regression = model(alpha=alpha, normalize=normalize)
         elif model == LASSO_MODEL:
             self.linear_regression = model(alpha=alpha, normalize=normalize)
-        # elif model == RIDGECV_MODEL:
-        #     self.linear_regression = model(alpha=alpha, normalize=normalize)
+        elif model == RIDGECV_MODEL:
+            self.linear_regression = model(alphas=alphas, normalize=normalize, cv=cv)
         else:
             raise NotImplementedError(f'model {model} not implemented!')
 
