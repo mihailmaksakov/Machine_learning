@@ -64,31 +64,6 @@ def get_email_body(payload):
         return payload.get_payload()
 
 
-# def create_vocabulary():
-#
-#     vocabulary = dict()
-#
-#     for root, subdirs, files in os.walk('spam'):
-#         for email_file in files:
-#             print(f'{root}\\{email_file}\n')
-#             email_file_text = open(f'{root}\\{email_file}', 'r', encoding='ansi').read()
-#             email_object = email.message_from_string(email_file_text)
-#             email_body_norm = normalize_string(get_email_body(email_object))
-#             for n_word in email_body_norm.split():
-#                 vocabulary[n_word] += 1
-
-
-# def read_files(directory, X, y, is_spam=1):
-#     for root, subdirs, files in os.walk(directory):
-#         for email_file in files:
-#             print(f'{root}\\{email_file}\n')
-#             email_file_text = open(f'{root}\\{email_file}', 'r', encoding='ansi').read()
-#             email_object = email.message_from_string(email_file_text)
-#             # print(get_email_body(email_object))
-#             X = np.vstack((X, np.array(string_to_features(get_email_body(email_object), vocabulary))))
-#             y = np.vstack((y, np.array([is_spam])))
-
-
 data = loadmat('spamTrain.mat')
 X_train = data['X']
 y_train = data['y']
@@ -97,7 +72,7 @@ data = loadmat('spamTest.mat')
 X_test = data['Xtest']
 y_test = data['ytest']
 
-clf = load('spamTrain.clf.linear')
+clf = load('spam_assasin_based_spam_filter/spamTrain.clf.linear')
 
 # best_score = 0
 # best_C = 0
