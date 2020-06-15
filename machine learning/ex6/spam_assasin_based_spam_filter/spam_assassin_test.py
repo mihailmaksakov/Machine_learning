@@ -10,7 +10,7 @@ clf = load('spam_assasin_based_spam_filter/spam_assasin.linear.clf')
 # pickle.dump(vocabulary, open("spam_assasin_based_spam_filter/vocabulary.pkl", "wb"))
 vocabulary = pickle.load(open("spam_assasin_based_spam_filter/vocabulary.pkl", "rb"))
 
-X_test, y_test = read_files('spam_assasin_based_spam_filter/unknown_emails/spam', 1, vocabulary)
+X_test, y_test = read_files('spam_assasin_based_spam_filter/unknown_emails/nonspam', 0, vocabulary)
 
 P = clf.predict(X_test)
 
