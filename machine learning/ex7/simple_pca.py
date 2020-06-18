@@ -8,9 +8,9 @@ from sklearn.preprocessing import normalize
 data = loadmat('ex7data1.mat')
 X = data['X']
 
-# X = (X - X.mean(axis=0)) / X.std(axis=0)
+X = (X - X.mean(axis=0)) / X.std(axis=0)
 
-plt.scatter(X[:, 0], X[:, 1], marker='o')
+plt.scatter(X[:, 0], X[:, 1], marker='o', alpha=0.5)
 
 pca = PCA(n_components=2)
 X1 = pca.fit_transform(X)
@@ -28,5 +28,6 @@ for i in range(X.shape[0]):
 plt.arrow(*pca.mean_, *pca.components_[0], head_width=0.2, head_length=0.3, fc='black', ec='black')
 plt.arrow(*pca.mean_, *pca.components_[1], head_width=0.2, head_length=0.3, fc='black', ec='black')
 
+plt.axis('equal')
 plt.grid()
 plt.show()

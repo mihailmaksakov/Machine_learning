@@ -6,6 +6,8 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
+from sklearn.decomposition import PCA
+
 n_colors = 64
 
 
@@ -60,5 +62,17 @@ X_pic_p = (X_pic*255/x_variance).astype(np.uint8)
 
 im = Image.fromarray(X_pic_p, mode='RGB')
 im.save("_DSC0675_1_c.jpeg")
+
+plt.figure(3)
+plt.clf()
+ax = plt.axes(projection='3d')
+ax.scatter(image_array[:, 0], image_array[:, 1], image_array[:, 2], c=labels, cmap='coolwarm', marker=',')
+
+pca = PCA(n_components=2)
+image_array_2d = pca.fit_transform(image_array)
+
+plt.figure(4)
+plt.clf()
+plt.scatter(image_array_2d[:, 0], image_array_2d[:, 1], c=labels, cmap='coolwarm', marker=',')
 
 plt.show()
